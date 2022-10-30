@@ -1,0 +1,93 @@
+##########################################################
+#              HEROBRINE PVP CORE CONFIG                 #
+#      This file contains user/punishment information    #
+#     and also settings for the server. If you need to   #  
+#  access the settings quickly. Just do CTRL+F and search#
+#               for the "settings" section.              #
+# Format:                                                #
+# players:                                               #
+#   uuid:                                                #
+#     rank: ADMIN                                        #
+#     plusColor: &c                                      #
+#     level: 1                                           #
+#     xp: 0                                              #
+#     joinDate: timestamp                                #
+#     lastLogin: timestamp                               #
+#     lastDisconnect: timestamp                          #
+#     playerNames:                                       #
+#     ipAddress:                                         #
+#     isBanned: false                                    #
+#     isIpBanned: false                                  #
+#     isMuted: false                                     #
+#     activePunishmentId:                                #  
+#     currencies:                                        #
+#       trophies: 50                                     #
+#       coins: 100                                       #
+#     punishments:                                       #
+#       bans:                                            #
+#         banId:                                         # 
+#           banDate: timestamp                           #
+#           banType: IP                                  #
+#           bannedBy: playerName                         #
+#           banExpires: timestamp                        #
+#           banReason:                                   #
+#       mutes:                                           #
+#         muteId:                                        #
+#            muteDate: timestamp                         #
+#            muteType: TEMPORARY                         #
+#            mutedBy: playerName                         #
+#            muteExpires: timestamp                      #
+#            muteReason:                                 #
+#    unlockedItems:                                      #
+#      cosmetics: [COSMETIC1,COSMETIC2]                  #
+#      emotes: [EMOTE1,EMOTE2]                           #
+#      classes: [KIT1,KIT2]                              #
+#    stats:                                              #
+#      games:                                            #
+#        bh:                                             #
+#          wins:                                         #
+#          roundsWon:                                    # 
+#          roundsPlayed:                                 #
+#          blocksMined:                                  #
+#          blocksFound:                                  #
+#       bc:                                              #
+#         wins:                                          #
+#         kills:                                         #
+#         roundsPlayed:                                  #
+# pardons:                                               #
+#   bans:                                                #
+#    banId:                                              #
+#     unbanReason:                                       #
+#     unbannedBy:                                        #
+#     unbannedTime:                                      #
+#   mutes:                                               #
+#    muteId:                                             #
+#      unmuteReason:                                     #
+#      unmutedBy:                                        #
+#      unmutedTime: timestamp                            #
+#                                                        #
+#  holograms:                                            #
+#    hologramId:                                         #
+#      text: '&7Test'                                    #
+#      location:                                         #
+#        x:                                              #
+#        y:                                              #
+#        z:                                              #
+# settings:                                              #
+#   maxLevel: 100                                        #
+#   minXP: 100                                           #
+#   progressiveMultiplier: 1.5                           #
+#   prestigeDivisor: 10                                  #
+#   prestigeColors: [&7,&6,&b,&a,&2,&9,&d,&5,&c,&c&l]    #
+#   bannedIps: [232.323.23.1,23.23.4.5]                  #                                   
+##########################################################
+ players:
+ pardons:
+ holograms:
+ settings:
+   environment: PRODUCTION
+   maxLevel: 100                                        
+   minXP: 100                                           
+   progressiveMultiplier: 1.5                           
+   prestigeDivisor: 10                                  
+   prestigeColors: ['&7','&6','&b','&a','&2','&9','&d','&5','&c','&c&l']

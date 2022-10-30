@@ -1,0 +1,91 @@
+main: net.herobrine.core.HerobrinePVPCore
+name: HBPVP-Core
+version: 1.5
+commands:
+  rank:
+    description: Manage a players rank.
+    aliases: [setrank]
+  admin:
+    description: Set up a new Admin user from console. Also an alternative to set a player's rank through console.
+    aliases: [cr, consolerank]
+  emotes:
+    description: See all the available emotes!
+  nick:
+    description: Change your player name in-game.    
+  gmc:
+    description: Sets your own or another players gamemode to creative.
+  gms:
+    description: Sets your own or another players gamemode to survival.
+  gma:
+    description: Sets your own or another players gamemode to adventure.
+  gmsp:
+    description: Sets your own or another players gamemode to spectator.
+  build:
+    description: Allows an administrator to build, or manage their inventory.
+  ban:
+    description: Bans a player.
+  tempban:
+    description: Bans a player temporarily.
+  unban:
+    description: Unban a player.
+  mute:
+    description: Mute a player.
+  unmute:
+    description: Unmute a player. 
+  speed:
+    description: Set the movement speed for yourself or a player.
+  coins:
+    description: Manage coins for a player.
+  trophies:
+    description: Manage trophies for a player.
+  fly:
+    description: I believe I can fly.
+  message:
+    description: Message other players!
+    aliases: [msg]
+  announce:
+    description: Send a message to the entire server!
+  kaboom:
+    description: Launch everyone in your world or a specific player!
+  forcecredits:
+    description: Force someone to view the end-game credits.
+  rankcolor:
+    description: Set your plus color!
+  mutechat:
+    description: Mutes chat globally across the whole server!
+  songtest:
+    description: Play a test song to yourself!
+  rename:
+    description: Rename the item you're holding. Compatible with color codes!
+  shop:
+    description: Access/Manage the shop for kits, cosmetics, and more!
+  hologram:
+    description: Create/Manage hologram messages!
+    aliases: [holograms, holo]
+  unlockitem:
+    description: Unlock an unlockable item/cosmetic for yourself or another player.
+  discord:
+    description: Get the link of our discord server.
+  sudo:
+    description: Force another player to say something, or run a command of your choosing.
+  leveltest:
+    description: Level up test.
+  level:
+    description: Manage player levels and XP.
+  lore:
+    description: Manage item lore. Useful for making GUIs.
+  resetlevels:
+    description: Reset ALL player levels.
+  resetstats:
+    description: Reset ALL player stats.
+  setenv:
+    description: Set the server environment.
+    aliases: [env, environment]
+  history:
+    description: Get punishment history.
+  showdemo:
+    description: Force a player to see the demo.
+  rainbowparticle:
+    description: Rainbow Particle.
+  clearoldusers:
+    description: Unregister all users who haven't logged in for 3+ months.
