@@ -25,11 +25,15 @@ Some of the cool things:
 
 
 - Custom Punishments:
-- Staff can mute and ban players temporarily and permanently, and all punishment/pardon history is stored.
+ - Staff can mute and ban players temporarily and permanently, and all punishment/pardon history is stored.
 ![image](https://user-images.githubusercontent.com/74119793/198863965-2aaf27bf-f9e0-4ec0-a8d7-68d4b81d452e.png)
 
 ![image](https://user-images.githubusercontent.com/74119793/198864065-ef375618-3332-4b86-b056-d4476ca7df72.png)
 
+
+- Permissions:
+ - All permissions are rank-based, which each rank having its own permission level. 
+ - The highest permission level is 9, which equates to admin rank.
 
 
 Cool Commands:
