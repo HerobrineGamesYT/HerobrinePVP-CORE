@@ -9,6 +9,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class HistoryCommand implements CommandExecutor {
+   // THIS COMMAND IS IN DEVELOPMENT AND IS NOT FUNCTIONAL YET!
+    
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
@@ -37,8 +39,6 @@ public class HistoryCommand implements CommandExecutor {
                     else {
                         player.sendMessage(ChatColor.RED + "This player has never played before.");
                     }
-
-
 
                 }
                 else if (args.length >= 2) {
