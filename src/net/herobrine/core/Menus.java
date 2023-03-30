@@ -3,7 +3,10 @@ package net.herobrine.core;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.IntPredicate;
 
+import net.herobrine.deltacraft.game.Missions;
+import org.apache.commons.lang3.ArrayUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -21,6 +24,45 @@ import net.herobrine.gamecore.ClassTypes;
 import net.herobrine.gamecore.Games;
 
 public class Menus {
+
+
+	public static void applyElectionMenu(Player player) {
+		Inventory electionMenu = Bukkit.createInventory(null, 27, "Election");
+
+		int[] candidateSlots = new int[] {9, 11, 13, 15, 17};
+
+		SkullMaker candidate = new SkullMaker(ChatColor.LIGHT_PURPLE + "Voidley", Arrays.asList(ChatColor.DARK_GRAY + "Candidate", ChatColor.DARK_GRAY + "Year 259",
+				"", ChatColor.LIGHT_PURPLE + "Superior Decree", ChatColor.GRAY + "Increases the spawn chance of Superior Dragons by " + ChatColor.LIGHT_PURPLE + "10%",
+				"", ChatColor.LIGHT_PURPLE + "Void's Calling", ChatColor.GRAY + "Increases Voidgloom Slayer experience by " + ChatColor.LIGHT_PURPLE + "15%",
+				"", ChatColor.translateAlternateColorCodes('&', "&d&kVoid Dragon"), ChatColor.GRAY + "Adds the " +
+						ChatColor.translateAlternateColorCodes('&', "&d&lVoid Dragon") + ChatColor.GRAY + ".",
+				"", ChatColor.LIGHT_PURPLE + "This is a SPECIAL candidate!", ChatColor.GRAY + "It rarely appears.", "",
+				ChatColor.DARK_GRAY + "You may change your vote", ChatColor.DARK_GRAY + "at any time until the", ChatColor.DARK_GRAY + "election ends!", "",
+				ChatColor.YELLOW + "Click to vote for Voidley!"), "http://textures.minecraft.net/texture/bb3293015c6759794ac1327ce39ac967b9604a0657f32830a9b66f9a2629a53e");
+
+		ItemStack filler = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 7);
+
+		ItemMeta fillerMeta = filler.getItemMeta();
+		fillerMeta.setDisplayName(" ");
+
+		filler.setItemMeta(fillerMeta);
+
+		int i = 0;
+		while(i <=26) {
+			if (ArrayUtils.contains(candidateSlots, i)) electionMenu.setItem(i, candidate.getSkull());
+			else electionMenu.setItem(i, filler);
+			i++;
+		}
+
+
+		player.openInventory(electionMenu);
+	}
+
+	public static void applyElectionCountMenu(Player player) {
+		Inventory electionMenu = Bukkit.createInventory(null, 54, "Election, Year 259");
+
+	}
+
 	public static void applyGameModeSelection(Player player) {
 		Inventory selectionMenu = Bukkit.createInventory(null, 27, ChatColor.GRAY + "Game Selection");
 
@@ -55,8 +97,8 @@ public class Menus {
 		SkullMaker wsg = new SkullMaker(ChatColor.YELLOW + "Walls SG", Arrays.asList(""),
 				"http://textures.minecraft.net/texture/7974325fb019d591af4b2e6e4688714b1e95a8dbf981ebec22fa3538e19ec9d0");
 
-		ItemBuilder comingSoon = new ItemBuilder(Material.PAPER);
-		comingSoon.setDisplayName(ChatColor.GRAY + "Coming Soon");
+		ItemBuilder comingSoon = new ItemBuilder(Material.EYE_OF_ENDER);
+		comingSoon.setDisplayName(HerobrinePVPCore.translateString("&c&lDELTACRAFT"));
 
 		// reserved game slots: 10-16;
 
@@ -79,6 +121,28 @@ public class Menus {
 		player.openInventory(selectionMenu);
 	}
 
+
+	public static void applyMissionSelectMenu(Player player) {
+		Inventory missionMenu = Bukkit.createInventory(null, 27, ChatColor.translateAlternateColorCodes('&', "&c&lDELTACRAFT &r&7- &6Missions"));
+
+		int i = 10;
+
+		int end = 15;
+
+		for (Missions mission: Missions.values()) {
+			if (i > end) break;
+			ItemBuilder missionItem = new ItemBuilder(mission.getItem());
+			missionItem.setDisplayName(mission.getName());
+			missionItem.setLore(Arrays.asList(mission.getDescription()));
+
+			missionMenu.setItem(i, missionItem.build());
+			i++;
+		}
+
+		player.openInventory(missionMenu);
+
+
+	}
 	public static void applyGamemodeMenu(Player player) {
 		Inventory gameMenu = Bukkit.createInventory(null, 27, ChatColor.GREEN + "Which gamemode?");
 

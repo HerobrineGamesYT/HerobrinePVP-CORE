@@ -3,6 +3,8 @@ package net.herobrine.core;
 import java.util.Date;
 import java.util.UUID;
 
+import net.citizensnpcs.api.event.NPCRightClickEvent;
+import net.herobrine.deltacraft.game.Missions;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -25,6 +27,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.DisplaySlot;
 
 import net.herobrine.gamecore.ClassTypes;
@@ -158,6 +161,8 @@ public class Listeners implements Listener {
 
 		Player player = e.getPlayer();
 		player.setWalkSpeed(.2F);
+		player.setMaxHealth(20);
+		player.setHealth(20);
 		ItemStack selector = new ItemStack(Material.COMPASS, 1);
 		ItemMeta selectorMeta = selector.getItemMeta();
 		selectorMeta.setDisplayName(ChatColor.GREEN + "Game Selector");
@@ -199,6 +204,7 @@ public class Listeners implements Listener {
 			player.setExp(HerobrinePVPCore.getFileManager().getPlayerXP(player.getUniqueId())
 					/ HerobrinePVPCore.getFileManager().getMaxXP(player.getUniqueId()));
 			// send welcome message
+
 
 		} else {
 
@@ -600,6 +606,13 @@ public class Listeners implements Listener {
 
 	@EventHandler
 	public void onItemClick(PlayerInteractEvent e) {
+
+		if (e.getClickedBlock() != null) {
+			if (e.getClickedBlock().getType().equals(Material.JUKEBOX)) {
+				Menus.applyElectionMenu(e.getPlayer());
+			}
+		}
+
 		if (e.getPlayer().getItemInHand() != null && e.getPlayer().getItemInHand().hasItemMeta()
 				&& e.getPlayer().getItemInHand().getItemMeta().getDisplayName() != null) {
 			if (e.getPlayer().getItemInHand().getType().equals(Material.COMPASS)
@@ -629,6 +642,17 @@ public class Listeners implements Listener {
 		} else {
 			return;
 		}
+	}
+
+	@EventHandler
+	public void onRightClick(NPCRightClickEvent e) {
+
+		if (e.getNPC().getName().contains("CLICK")) {
+			e.getClicker().sendMessage(ChatColor.LIGHT_PURPLE + "[NPC] Voidley" + ChatColor.WHITE + ": The world is coming to an end, but I can help stop it.");
+			e.getClicker().sendMessage(ChatColor.LIGHT_PURPLE + "[NPC] Voidley" + ChatColor.WHITE + ": By making" + ChatColor.LIGHT_PURPLE +  ChatColor.BOLD + " The End"  + ChatColor.RESET  + " " + ChatColor.WHITE + "much better!");
+			e.getClicker().sendMessage(ChatColor.LIGHT_PURPLE + "[NPC] Voidley"  + ChatColor.WHITE + ": You won't regret voting for me. The dragons will reward you handsomely.");
+		}
+
 	}
 
 	@EventHandler
@@ -685,11 +709,7 @@ public class Listeners implements Listener {
 					break;
 
 				case EYE_OF_ENDER:
-					player.sendMessage(
-							ChatColor.RED + "This game is not currently available! Reason: Not developed yet");
-					player.closeInventory();
-					// player.sendMessage(ChatColor.GRAY + "Sending you to a game of " +
-					// ChatColor.GREEN + "Skywars");
+					Menus.applyMissionSelectMenu(player);
 					break;
 				case GRASS:
 					GameCoreMain.getInstance().startQueue(player, Games.BLOCK_HUNT, GameType.VANILLA);
@@ -705,11 +725,31 @@ public class Listeners implements Listener {
 					player.sendMessage(ChatColor.RED + "This game is coming soon!");
 					player.closeInventory();
 					break;
+
 				default:
 					return;
 				}
 
 			}
+		}
+
+		else if (e.getClickedInventory() != null && e.getClickedInventory().getTitle() != null
+				&& ChatColor.translateAlternateColorCodes('&', e.getClickedInventory().getTitle())
+				.equals(HerobrinePVPCore.translateString("&c&lDELTACRAFT &r&7- &6Missions"))) {
+
+			if(e.getCurrentItem() == null) return;
+			if(e.getCurrentItem().getType().equals(Material.AIR)) return;
+
+			for(Missions mission: Missions.values()) {
+				if (mission.getItem().equals(e.getCurrentItem().getType())) {
+					player.closeInventory();
+					GameCoreMain.getInstance().startQueue(player, Games.DELTARUNE, GameType.valueOf(mission.name()));
+					return;
+				}
+			}
+			player.closeInventory();
+			player.sendMessage(ChatColor.RED + "Sorry! But there was no mission found for that item type.");
+
 		}
 
 		else if (e.getClickedInventory() != null && e.getClickedInventory().getTitle() != null

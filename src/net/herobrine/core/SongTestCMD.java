@@ -23,18 +23,29 @@ public class SongTestCMD implements CommandExecutor {
 				}
 
 				if (args.length == 1) {
-					if (Songs.valueOf(args[0].toUpperCase()) != null) {
 
-						SongPlayer.playSong(player, Songs.valueOf(args[0].toUpperCase()));
+					if (args[0].equalsIgnoreCase("stop")) {
+						SongPlayer.stopSong(player);
+						player.sendMessage(ChatColor.RED + "Stopped the currently playing song! (If you had one)");
 
-					} else {
+						return false;
+					}
+
+					try {SongPlayer.playSong(player, Songs.valueOf(args[0].toUpperCase()));}
+
+					catch(IllegalArgumentException e) {
 						player.sendMessage(ChatColor.GOLD + "Invalid Song!");
 						player.sendMessage(ChatColor.GREEN + "Songs List: ");
 						for (Songs song : Songs.values()) {
 							player.sendMessage(ChatColor.GREEN + "- " + ChatColor.GOLD + song.getName());
-
 						}
 					}
+
+
+
+
+
+
 				}
 
 				else {

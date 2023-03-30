@@ -1,6 +1,7 @@
 main: net.herobrine.core.HerobrinePVPCore
 name: HBPVP-Core
 version: 1.5
+loadbefore: [DeltaCraft]
 commands:
   rank:
     description: Manage a players rank.
@@ -89,3 +90,10 @@ commands:
     description: Rainbow Particle.
   clearoldusers:
     description: Unregister all users who haven't logged in for 3+ months.
+  onepiece:
+    description: The one piece is real.
+  sbelection:
+    description: Fake a Hypixel SkyBlock election.
+
+  tpall:
+    description: Teleport all players.

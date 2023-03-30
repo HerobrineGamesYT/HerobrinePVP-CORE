@@ -18,9 +18,6 @@ public class EnvironmentCommand implements CommandExecutor {
 
                 if (args.length == 1) {
 
-
-
-
                     if (!args[0].equalsIgnoreCase("DEV") && !args[0].equalsIgnoreCase("PRODUCTION")) {
                         player.sendMessage(ChatColor.RED + "You can only set the environment to PRODUCTION or DEV");
                         player.sendMessage(ChatColor.RED + "You tried to set the environment to: " + args[0]);

@@ -15,8 +15,7 @@ public class UnbanCommand implements CommandExecutor {
 
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
-			if (HerobrinePVPCore.getFileManager().getRank(player).equals(Ranks.OWNER)
-					|| HerobrinePVPCore.getFileManager().getRank(player).equals(Ranks.ADMIN)) {
+			if (HerobrinePVPCore.getFileManager().getRank(player).getPermLevel() >= 9) {
 
 				if (args.length < 2) {
 					player.sendMessage(ChatColor.RED + "Invalid usage! Usage: /unban <player> <reason>");
@@ -55,7 +54,36 @@ public class UnbanCommand implements CommandExecutor {
 		}
 
 		else {
-			sender.sendMessage("You can only use this command as a player!");
+			if (args.length < 2) {
+				sender.sendMessage(ChatColor.RED + "Invalid usage! Usage: /unban <player> <reason>");
+
+			} else {
+				int al = args.length;
+				StringBuilder sb = new StringBuilder(args[1]);
+				for (int i = 2; i < al; i++) {
+					sb.append(' ').append(args[i]);
+					// reason is sb.toString();
+				}
+
+				OfflinePlayer target = Bukkit.getOfflinePlayer(args[0]);
+				if (target != null && HerobrinePVPCore.getFileManager().isUserRegistered(target.getUniqueId())) {
+
+					if (HerobrinePVPCore.getFileManager().isBanned(target.getUniqueId())) {
+
+						HerobrinePVPCore.getFileManager().removeBan(target.getUniqueId(), "CONSOLE",
+								sb.toString());
+
+						sender.sendMessage(ChatColor.GREEN + "The player " + ChatColor.GOLD + target.getName()
+								+ ChatColor.GREEN + " has been unbanned successfully.");
+					} else {
+						sender.sendMessage(ChatColor.GRAY + "You cannot unban " + ChatColor.GOLD + target.getName()
+								+ ChatColor.GRAY + " because they are not banned.");
+					}
+				} else {
+					sender.sendMessage(ChatColor.GRAY + "You cannot unban " + ChatColor.GOLD + args[0]
+							+ ChatColor.GRAY + " because they are an unknown sender.");
+				}
+			}
 		}
 
 		return false;

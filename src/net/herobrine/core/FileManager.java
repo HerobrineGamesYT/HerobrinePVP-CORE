@@ -14,6 +14,7 @@ import java.util.UUID;
 import net.herobrine.blockhunt.Blocks;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -1290,6 +1291,67 @@ public class FileManager {
 		}
 
 		return false;
+	}
+
+
+	public void registerHologram(String name, String content, Location loc) {
+		main.getConfig().set("holograms." + name + ".content", content);
+		main.getConfig().set("holograms." + name + ".world", loc.getWorld().getName());
+		main.getConfig().set("holograms." + name + ".x", loc.getX());
+		main.getConfig().set("holograms." + name + ".y", loc.getY());
+		main.getConfig().set("holograms." + name + ".z", loc.getZ());
+
+		main.saveConfig();
+	}
+
+	public void removeHologram(String name) {
+		main.getConfig().set("holograms." + name, null);
+
+		main.saveConfig();
+	}
+
+	public void updateHologramContent(String name, String content) {
+		main.getConfig().set("holograms." + name + ".content", content);
+
+		main.saveConfig();
+	}
+
+	public Location getHologramLocation(String name) {
+		try {
+			Location loc = new Location(Bukkit.getWorld(main.getConfig().getString("holograms." + name + ".world")), main.getConfig().getDouble("holograms." + name + ".x"),
+					main.getConfig().getDouble("holograms." + name + ".y"), main.getConfig().getDouble("holograms." + name + ".z"));
+			if (loc == null) return null;
+
+			return loc;
+		}
+		catch(IllegalArgumentException e) {
+			return null;
+		}
+
+	}
+
+
+	public List<String> getValidHolograms() {
+		List<String> holos = new ArrayList<>();
+		HashMap<String, Object> objects = (HashMap<String, Object>) main.getConfig().getConfigurationSection("holograms")
+				.getValues(false);
+
+		for (String obj : objects.keySet()) {
+			holos.add(obj);
+		}
+
+		objects.clear();
+
+		return holos;
+	}
+
+	public String getHologramContent(String name) {
+		String string = main.getConfig().getString("holograms." + name + ".content");
+
+		if (string == null) return null;
+
+		return string;
+
 	}
 
 	@Deprecated

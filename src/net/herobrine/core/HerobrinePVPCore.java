@@ -134,6 +134,9 @@ public class HerobrinePVPCore extends JavaPlugin {
 		getCommand("showdemo").setExecutor(new ShowDemoCommand());
 		getCommand("rainbowparticle").setExecutor(new RainbowParticleCommand());
 		getCommand("clearoldusers").setExecutor(new ClearOldUsersCommand(this));
+		getCommand("onepiece").setExecutor(new OnePieceCommand(this));
+		getCommand("sbelection").setExecutor(new SkyBlockElectionCommand(this));
+		getCommand("tpall").setExecutor(new TPAllCommand());
 
 
 
