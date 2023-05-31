@@ -137,6 +137,7 @@ public class HerobrinePVPCore extends JavaPlugin {
 		getCommand("onepiece").setExecutor(new OnePieceCommand(this));
 		getCommand("sbelection").setExecutor(new SkyBlockElectionCommand(this));
 		getCommand("tpall").setExecutor(new TPAllCommand());
+		getCommand("warpbuildarea").setExecutor(new WarpBuildAreaCommand());
 
 
 

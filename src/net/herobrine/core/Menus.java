@@ -133,7 +133,16 @@ public class Menus {
 			if (i > end) break;
 			ItemBuilder missionItem = new ItemBuilder(mission.getItem());
 			missionItem.setDisplayName(mission.getName());
-			missionItem.setLore(Arrays.asList(mission.getDescription()));
+
+			ArrayList<String> lore = new ArrayList<String>(Arrays.asList(mission.getDescription()));
+
+			lore.add("");
+			lore.add(ChatColor.GRAY + "Boss: " +  ChatColor.RED + mission.getBoss().getName());
+
+			lore.add("");
+			lore.add(ChatColor.YELLOW + "Click to play!");
+
+			missionItem.setLore(lore);
 
 			missionMenu.setItem(i, missionItem.build());
 			i++;

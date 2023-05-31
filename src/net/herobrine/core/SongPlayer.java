@@ -5,13 +5,17 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import com.xxmicloxx.NoteBlockAPI.model.RepeatMode;
+import com.xxmicloxx.NoteBlockAPI.model.playmode.ChannelMode;
+import com.xxmicloxx.NoteBlockAPI.nbs4j.Song;
+import com.xxmicloxx.NoteBlockAPI.songplayer.RadioSongPlayer;
+import com.xxmicloxx.NoteBlockAPI.utils.SongLoader;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-import com.xxmicloxx.NoteBlockAPI.model.Song;
-import com.xxmicloxx.NoteBlockAPI.songplayer.RadioSongPlayer;
-import com.xxmicloxx.NoteBlockAPI.utils.NBSDecoder;
+
+
+
 
 public class SongPlayer {
 
@@ -21,8 +25,9 @@ public class SongPlayer {
 			stopSong(player);
 		}
 
-		Song song1 = NBSDecoder
-				.parse(new File(Bukkit.getPluginManager().getPlugin("HBPVP-Core").getDataFolder(), song.getSongName()));
+
+		Song song1 = SongLoader.loadSong(new File(Bukkit.getPluginManager().getPlugin("HBPVP-Core").getDataFolder(), song.getSongName()));
+
 		RadioSongPlayer rsp = new RadioSongPlayer(song1);
 		rsp.addPlayer(player);
 		rsp.setAutoDestroy(true);

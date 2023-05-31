@@ -3,6 +3,8 @@ package net.herobrine.core;
 import java.util.Date;
 import java.util.UUID;
 
+import net.citizensnpcs.api.event.NPCClickEvent;
+import net.citizensnpcs.api.event.NPCLeftClickEvent;
 import net.citizensnpcs.api.event.NPCRightClickEvent;
 import net.herobrine.deltacraft.game.Missions;
 import org.bukkit.Bukkit;
@@ -653,7 +655,14 @@ public class Listeners implements Listener {
 			e.getClicker().sendMessage(ChatColor.LIGHT_PURPLE + "[NPC] Voidley"  + ChatColor.WHITE + ": You won't regret voting for me. The dragons will reward you handsomely.");
 		}
 
+		if (e.getNPC().getName().contains("DELTACRAFT")) Menus.applyMissionSelectMenu(e.getClicker());
+
 	}
+
+
+	@EventHandler
+	public void onLeftClick(NPCLeftClickEvent e) {if (e.getNPC().getName().contains("DELTACRAFT")) Menus.applyMissionSelectMenu(e.getClicker());}
+
 
 	@EventHandler
 	public void onClick(InventoryClickEvent e) {

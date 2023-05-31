@@ -97,3 +97,5 @@ commands:
 
   tpall:
     description: Teleport all players.
+  warpbuildarea:
+    description: Warp to the dungeon build area!

@@ -6,7 +6,12 @@ public enum Songs {
 	BCLOSE("bclose.nbs", "bclose", "MUSIC", false), BCWIN("bcwin.nbs", "bcwin", "MUSIC", false), BCDRAW("bcdraw.nbs", "bcdraw", "MUSIC", false),
 	WSGWIN("wsgwin.nbs", "wsgwin", "MUSIC", false), WSGLOSE("wsglose.nbs", "wsglose", "MUSIC", false), WSGDRAW("wsgdraw.nbs", "wsgdraw", "MUSIC",  false),
 	HOPES_AND_DREAMS("13FieldofHopesandDreams.nbs", "hopes_and_dreams", "MUSIC", true), VRS_LANCER("21VsLancer.nbs", "vrs_lancer", "MUSIC", true),
-	SCARLET_FOREST("19Scarlet_Forest.nbs", "scarlet_forest", "MUSIC", true), ULTIMATE_SHOW("The_Ultimate_Show.nbs", "ultimate_show", "MUSIC", true);
+	SCARLET_FOREST("19Scarlet_Forest.nbs", "scarlet_forest", "MUSIC", true), ULTIMATE_SHOW("The_Ultimate_Show.nbs", "ultimate_show", "MUSIC", true),
+	MEGALOVANIA("Megalovania.nbs", "megalovania", "MUSIC", true),
+	CHAOS_KING("30ChaosKing.nbs", "chaos_king", "MUSIC", true),
+	LEGEND("8TheLegend.nbs", "legend", "MUSIC", false),
+	WORLD_REVOLVING("33The_World_Revolving.nbs", "world_revolving", "MUSIC", true);
+
 
 	private String songName;
 	private String name;
