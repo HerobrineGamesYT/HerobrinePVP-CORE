@@ -7,6 +7,7 @@ import net.citizensnpcs.api.event.NPCClickEvent;
 import net.citizensnpcs.api.event.NPCLeftClickEvent;
 import net.citizensnpcs.api.event.NPCRightClickEvent;
 import net.herobrine.deltacraft.game.Missions;
+import net.herobrine.gamecore.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -31,14 +32,6 @@ import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.DisplaySlot;
-
-import net.herobrine.gamecore.ClassTypes;
-import net.herobrine.gamecore.GameCoreMain;
-import net.herobrine.gamecore.GameState;
-import net.herobrine.gamecore.GameType;
-import net.herobrine.gamecore.Games;
-import net.herobrine.gamecore.Manager;
-import net.herobrine.gamecore.Teams;
 
 public class Listeners implements Listener {
 
@@ -206,8 +199,10 @@ public class Listeners implements Listener {
 			player.setExp(HerobrinePVPCore.getFileManager().getPlayerXP(player.getUniqueId())
 					/ HerobrinePVPCore.getFileManager().getMaxXP(player.getUniqueId()));
 			// send welcome message
-
-
+			if (HerobrinePVPCore.getFileManager().getEnvironment().equals("DEV")) {
+				player.sendMessage(ChatColor.YELLOW + "Hey there," + player.getName() + "!" + " Thanks for joining the Herobrine PVP Test Server.");
+				player.sendMessage(ChatColor.YELLOW + "If you're trying out any minigames, please be sure to leave some feedback! <3");
+			}
 		} else {
 
 			if (HerobrinePVPCore.getFileManager().getPlusColor(player.getUniqueId()) == null) {
@@ -275,6 +270,7 @@ public class Listeners implements Listener {
 					+ HerobrinePVPCore.getFileManager().getRank(player).getName() + " " + player.getName());
 		}
 
+		player.teleport(net.herobrine.gamecore.Config.getLobbySpawn());
 	}
 
 	@EventHandler

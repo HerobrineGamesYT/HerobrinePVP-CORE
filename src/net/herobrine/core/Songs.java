@@ -10,7 +10,13 @@ public enum Songs {
 	MEGALOVANIA("Megalovania.nbs", "megalovania", "MUSIC", true),
 	CHAOS_KING("30ChaosKing.nbs", "chaos_king", "MUSIC", true),
 	LEGEND("8TheLegend.nbs", "legend", "MUSIC", false),
-	WORLD_REVOLVING("33The_World_Revolving.nbs", "world_revolving", "MUSIC", true);
+	WORLD_REVOLVING("33The_World_Revolving.nbs", "world_revolving", "MUSIC", true),
+	TEST_PERF("testPerf.nbs", "test_perf", "MUSIC", false),
+	TEST_NOT_PERF("testNotPerf.nbs", "test_not_perf", "MUSIC", false),
+	YOU_SAY_RUN("youSayRun.nbs", "you_say_run", "MUSIC", true),
+	QBWIN("qbwin.nbs", "qbwin", "MUSIC", false),
+	QBDRAW("qbdraw.nbs", "qbdraw", "MUSIC", false),
+	QBLOSE("qblose.nbs", "qblose", "MUSIC", false);
 
 
 	private String songName;

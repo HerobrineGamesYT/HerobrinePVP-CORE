@@ -1,6 +1,5 @@
 package net.herobrine.core;
 
-import net.citizensnpcs.api.event.NPCRightClickEvent;
 import net.herobrine.gamecore.GameCoreMain;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

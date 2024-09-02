@@ -53,9 +53,9 @@ public class TempBanCommand implements CommandExecutor {
 					} else if (args[1].endsWith("h") || args[1].endsWith("hr") || args[1].endsWith("hrs")
 							|| args[1].endsWith("hours")) {
 
-						int banHours = Integer.parseInt(args[1]);
+						int banHours = Integer.parseInt(args[1].replaceAll("[\\D]", ""));
 
-						banTime = 86400 * banHours;
+						banTime = 3600 * banHours;
 					} else if (args[1].endsWith("m") || args[1].endsWith("minutes")) {
 
 						int banMinutes = Integer.parseInt(args[1].replaceAll("[\\D]", ""));

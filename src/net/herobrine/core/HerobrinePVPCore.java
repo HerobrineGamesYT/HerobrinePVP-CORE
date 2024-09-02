@@ -39,9 +39,6 @@ public class HerobrinePVPCore extends JavaPlugin {
 	public void onEnable() {
 		fileManager = new FileManager(this);
 
-        
-
-
 		if (getGameCoreAPI() == null) {
 			System.out.println("[HBPVP-CORE] You need the game core to use the HBPVP-CORE plugin.");
 			Bukkit.getPluginManager().disablePlugin(this);
@@ -138,6 +135,7 @@ public class HerobrinePVPCore extends JavaPlugin {
 		getCommand("sbelection").setExecutor(new SkyBlockElectionCommand(this));
 		getCommand("tpall").setExecutor(new TPAllCommand());
 		getCommand("warpbuildarea").setExecutor(new WarpBuildAreaCommand());
+		getCommand("whereami").setExecutor(new WhereAmICommand());
 
 
 
@@ -166,6 +164,7 @@ public class HerobrinePVPCore extends JavaPlugin {
 
 		return ps;
 	}
+
 
 	private void createTables() {
 		if (!tableExists("userinformation")) {
@@ -462,11 +461,11 @@ public class HerobrinePVPCore extends JavaPlugin {
 		return fileManager;
 	}
 
-	public void getRank(Player player) {
+	public static void getRank(Player player) {
 		HerobrinePVPCore.getFileManager().getRank(player);
 	}
 
-	public ChatColor getRankColor(Player player) {
+	public static ChatColor getRankColor(Player player) {
 		Ranks rank = HerobrinePVPCore.getFileManager().getRank(player);
 		return rank.getColor();
 	}

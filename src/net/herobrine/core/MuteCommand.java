@@ -85,7 +85,7 @@ public class MuteCommand implements CommandExecutor {
 
 						int banHours = Integer.parseInt(args[1].replaceAll("[\\D]", ""));
 
-						banTime = 86400 * banHours;
+						banTime = 3600 * banHours;
 					} else if (args[1].endsWith("m") || args[1].endsWith("minutes")) {
 
 						int banMinutes = Integer.parseInt(args[1].replaceAll("[\\D]", ""));

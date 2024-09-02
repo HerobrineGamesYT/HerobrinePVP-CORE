@@ -22,6 +22,10 @@ public class TPAllCommand implements CommandExecutor {
                 player.sendMessage(ChatColor.GREEN + "Teleporting all players...");
 
             }
+
+            else {
+                player.sendMessage(ChatColor.RED + "No permission!");
+            }
         }
 
         return false;

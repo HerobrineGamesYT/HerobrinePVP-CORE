@@ -125,6 +125,8 @@ public class FileManager {
 		main.getConfig().set("players." + player.getUniqueId().toString() + ".stats.games.wsg.wins", 0);
 		main.getConfig().set("players." + player.getUniqueId().toString() + ".stats.games.wsg.kills", 0);
 		main.getConfig().set("players." + player.getUniqueId().toString() + ".stats.games.wsg.roundsPlayed", 0);
+		main.getConfig().set("players." + player.getUniqueId().toString() + ".stats.games.dc.roundsPlayed", 0);
+		main.getConfig().set("players." + player.getUniqueId().toString() + ".stats.games.dc.wins", 0);
 		main.saveConfig();
 	}
 
@@ -165,6 +167,8 @@ public class FileManager {
 		main.getConfig().set("players." + uuid.toString() + ".stats.games.wsg.wins", 0);
 		main.getConfig().set("players." + uuid.toString() + ".stats.games.wsg.kills", 0);
 		main.getConfig().set("players." + uuid.toString() + ".stats.games.wsg.roundsPlayed", 0);
+		main.getConfig().set("players." + uuid.toString() + ".stats.games.dc.roundsPlayed", 0);
+		main.getConfig().set("players." + uuid.toString() + ".stats.games.dc.wins", 0);
 		main.saveConfig();
 	}
 
@@ -331,8 +335,6 @@ public class FileManager {
 	}
 
 	public void updateLastJoin(Player player) {
-		DateFormat df = new SimpleDateFormat("MM-dd-yy-k-m-s");
-		Date dateobj = new Date();
 		main.getConfig().set("players." + player.getUniqueId().toString() + ".lastLogin",
 				System.currentTimeMillis() / 1000L);
 		main.saveConfig();
@@ -394,7 +396,7 @@ public class FileManager {
 		}
 
 
-
+		//TODO
 		// arr = [id, player, type, timestamps, moderator, reason]
 
 		String[] info = new String[] {};
@@ -465,7 +467,7 @@ public class FileManager {
 			break;
 
 		case MAGIC:
-			System.out.println("INVLALID COLOR: Magic. Special Plus Colors are not allowed!");
+			System.out.println("INVALID COLOR: Magic. Special Plus Colors are not allowed!");
 			break;
 
 		case LIGHT_PURPLE:
@@ -473,7 +475,7 @@ public class FileManager {
 			break;
 
 		case ITALIC:
-			System.out.println("INVLALID COLOR: Italic. Special Plus Colors are not allowed!");
+			System.out.println("INVALID COLOR: Italic. Special Plus Colors are not allowed!");
 			break;
 
 		case GRAY:
@@ -517,7 +519,7 @@ public class FileManager {
 			break;
 
 		case BOLD:
-			System.out.println("INVLALID COLOR: Bold. Special Plus Colors are not allowed!");
+			System.out.println("INVALID COLOR: Bold. Special Plus Colors are not allowed!");
 			break;
 
 		default:
@@ -677,16 +679,21 @@ public class FileManager {
 	// INT IS TO SET A STAT TO SOMETHING. BE SURE TO GET THE STAT FIRST AND ADD TO
 	// BEFORE SETTING!
 	public void setGameStats(UUID uuid, Games game, String stat, int number) {
-
 		main.getConfig().set("players." + uuid.toString() + ".stats.games." + game.getKey() + "." + stat, number);
 		main.saveConfig();
+	}
 
+	public void setGameStats(UUID uuid, Games game, String stat, String string) {
+		main.getConfig().set("players." + uuid.toString() + ".stats.games." + game.getKey() + "." + stat, string);
+		main.saveConfig();
 	}
 
 	public int getGameStats(UUID uuid, Games game, String stat) {
-
 		return main.getConfig().getInt("players." + uuid.toString() + ".stats.games." + game.getKey() + "." + stat);
+	}
 
+	public String getGameStatString(UUID uuid, Games game, String stat) {
+		return main.getConfig().getString("players." + uuid.toString() + ".stats.games." + game.getKey() + "." + stat);
 	}
 
 	public void unlockItem(ItemTypes type, String itemName, UUID uuid) {
@@ -829,13 +836,9 @@ public class FileManager {
 
 	public boolean isBannedIP(String ip) {
 
-		if (main.getConfig().getStringList("settings.bannedIps").contains(ip)) {
-			return true;
-		}
+		if (main.getConfig().getStringList("settings.bannedIps").contains(ip)) return true;
+		else return false;
 
-		else {
-			return false;
-		}
 
 	}
 

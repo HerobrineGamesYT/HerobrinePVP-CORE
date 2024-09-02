@@ -15,6 +15,8 @@ public class SudoCommand implements CommandExecutor {
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 
+			// this command is locked to only me. yep. only me. sorry!
+			// If you have downloaded the plugin for use on your own server, feel free to change this. But I shall not.
 			if (player.getUniqueId().toString().equals("052e237b-b8ae-4756-a6a4-db139fbf47a3")) {
 
 				if (args.length <= 1) {

@@ -22,7 +22,7 @@ public class HelpCommand implements CommandExecutor {
 			player.sendMessage(ChatColor.RED + "*" + ChatColor.AQUA + "Can you add x feature?");
 			player.sendMessage(ChatColor.RED + "*" + ChatColor.AQUA + "Can I be staff?");
 			player.sendMessage(ChatColor.RED + "*" + ChatColor.AQUA + "How do I support this server?");
-
+			//Unfinished.
 		}
 
 		return false;

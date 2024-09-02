@@ -421,13 +421,7 @@ public class Menus {
 
 
 				for (String stat : game.getStatKeys()) {
-
-					System.out.println(stat);
 					lore.add(ChatColor.GRAY + game.getFriendlyStatKeys()[i2] + ": " + ChatColor.GREEN + HerobrinePVPCore.getFileManager().getGameStats(player.getUniqueId(), game, stat));
-
-
-
-
 					i2++;
 				}
 
